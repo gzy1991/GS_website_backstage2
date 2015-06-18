@@ -21,8 +21,8 @@ public class TopicDaoTest extends JUnitDaoBase{
 	@Test
 	public void test(){
 		//Page p = topicDaoImpl.getPagedTopics(1, 1, 2);
-		Page p = topicDaoImpl.getBoardDigestTopics(1, 1, 2);
-		System.out.println(p.getData());
+//		Page p = topicDaoImpl.getBoardDigestTopics(1, 1, 2);
+//		System.out.println(p.getData());
 		//Topic topic = new Topic(1,"AmazingTopic",1,new Date(),new Date(),0,0,Topic.Digest.Y);
 		//System.out.println(topic.getTopicTitle());
 	}

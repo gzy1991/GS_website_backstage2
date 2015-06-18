@@ -3,7 +3,6 @@ package net.gslab.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.jws.soap.SOAPBinding;
 
 import net.gslab.entity.User;
 import net.gslab.entity.User.ClassType;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@SOAPBinding(style = SOAPBinding.Style.DOCUMENT, use = SOAPBinding.Use.LITERAL, parameterStyle = SOAPBinding.ParameterStyle.WRAPPED)
 @Controller
 @RequestMapping("/view")//   RequestMapping，每个网页的“地址”，叫做统一资源标识符，
 public class UserController extends BaseController {
