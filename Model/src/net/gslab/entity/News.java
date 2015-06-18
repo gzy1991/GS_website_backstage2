@@ -6,16 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.springframework.format.annotation.DateTimeFormat;
-
 @Entity
 @Table(name="t_news")
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)            //设置cache缓存
 public class News extends BaseDomain{
 	
 	@Id

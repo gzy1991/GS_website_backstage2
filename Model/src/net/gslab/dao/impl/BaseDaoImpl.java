@@ -3,6 +3,8 @@ package net.gslab.dao.impl;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.sql.SQLException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -12,8 +14,10 @@ import javax.annotation.Resource;
 import net.gslab.dao.BaseDao;
 import net.gslab.setting.Page;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.Assert;
@@ -106,7 +110,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	 * @see net.gslab.dao.impl.BaseDao#find(java.lang.String, java.lang.Object)
 	 */
 	@Override
-	public List find(String hql, Object... params) {
+	public List<T> find(String hql, Object... params) {
 		return this.getHibernateTemplate().find(hql, params);
 	}
 
@@ -114,37 +118,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		this.getHibernateTemplate().initialize(entity);
 	}
 
-	public Page pagedQuery(String hql, int pageNo, final int pageSize,
-			Object... values) {
-		System.out.println("In the pagedQuery hql:" + hql);
-		Assert.hasText(hql);
-		Assert.isTrue(pageNo >= 1, "pageNo should start from 1");
 
-		String countQueryString = "select count(*)"
-				+ removeSelect(removeOrders(hql));
-		System.out.println("values: " + values.toString());
-		List countlist = this.getHibernateTemplate().find(countQueryString,
-				values);
-		System.out.println("countlist: " + countlist);
-		long totalCount = (Long) countlist.get(0);
-		if (totalCount < 1) {
-			return new Page();
-		}
-
-		final int startIndex = Page.getStartOfPage(pageNo, pageSize);
-		System.out.println("startIndex:" + startIndex + "  pageSize:"
-				+ pageSize);
-		Query query = createQuery(hql, values);
-
-		/*
-		 * !!!!!MYSQL不能执行limit top hibernate: select limit ? ? topic0_.topicId
-		 * as topicId2_ 想办法用
-		 */
-
-		List list = query.setFirstResult(startIndex).setMaxResults(pageSize).list();
-
-		return new Page(startIndex, totalCount, pageSize, list);
-	}
 
 	public Query createQuery(String hql, Object[] values) {
 		// TODO Auto-generated method stub
@@ -190,7 +164,33 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
 		this.hibernateTemplate = hibernateTemplate;
 	}
-	
-	
 
+
+
+	@Override
+	public Page getPage(final String hql, final int offset, final int length) {
+		// TODO Auto-generated method stub
+		int total=getCount(hql);
+		 List list = getHibernateTemplate().executeFind(new HibernateCallback() {     
+			    public Object doInHibernate(Session session)     
+			      throws HibernateException, SQLException {     
+			     Query query = session.createQuery(hql);     
+			     query.setFirstResult(offset);     
+			     query.setMaxResults(length);     
+			     List list = query.list();     
+			     return list;     
+			    }     
+			   });     
+		 return new Page(total,list);
+	}
+
+
+
+	@Override
+	public int getCount(String hql) {
+		// TODO Auto-generated method stub
+		hql="select count(*) "+hql; 
+		List list=find(hql);
+		return Integer.parseInt(list.get(0).toString());
+	}
 }
