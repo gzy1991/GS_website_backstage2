@@ -6,7 +6,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import net.gslab.entity.User;
-import net.gslab.entity.User.Locked;
 import net.gslab.service.UserService;
 
 
@@ -38,15 +37,12 @@ public class LoginController extends BaseController{
 			mav.addObject(ERROR_MSG_KEY, "用户名不存在");
 			mav.setViewName("redirect:/common/resource_not_found.jsp");
 			}
-		else if(!dbUser.getPassword().equals(user.getPassword())){
-			mav.addObject(ERROR_MSG_KEY,"用户密码不正确");
-			mav.setViewName("redirect:/common/resource_not_found.jsp");
-		}else if(dbUser.getLocked()==Locked.locked){
-			mav.addObject(ERROR_MSG_KEY,"用户已经被锁定无法登陆");
-			mav.setViewName("redirect:/common/resource_not_found.jsp");
-		}else{
-			dbUser.setLastIp(request.getRemoteAddr());
-			dbUser.setLastVisit(new Date());
+//		else if(!dbUser.getPassword().equals(user.getPassword())){
+//			mav.addObject(ERROR_MSG_KEY,"用户密码不正确");
+//			mav.setViewName("redirect:/common/resource_not_found.jsp");
+//		}else{
+//			dbUser.setLastIp(request.getRemoteAddr());
+//			dbUser.setLastVisit(new Date());
 			userService.loginSuccess(dbUser);
 			this.setSessionUser(request, dbUser);
 			String toUrl=(String)request.getSession().getAttribute(CommonConstant.LOGIN_TO_URL);
@@ -60,7 +56,7 @@ public class LoginController extends BaseController{
 			}
 			mav.setViewName("redirect:"+toUrl);
 		}
-		System.out.println(ERROR_MSG_KEY);
+		//System.out.println(ERROR_MSG_KEY);
 		return mav;
 	}
 }

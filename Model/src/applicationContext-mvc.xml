@@ -9,8 +9,9 @@
 	<context:component-scan base-package="net.gslab.controller"/>
 	
 
-	<mvc:annotation-driven conversion-service="conversionService"/>
-	
+<!--  	<mvc:annotation-driven conversion-service="conversionService"/>
+	-->
+	<mvc:annotation-driven></mvc:annotation-driven>
 	
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/view/"></property>
@@ -31,14 +32,13 @@
 	</bean>
 	
 	
-	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+ <!--	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
     <property name="converters">
       <set>
-        <bean class="net.gslab.util.StringToClassTypeConverter" />
-        <bean class="net.gslab.util.StringToGenderConverter"></bean>
+          <bean class="net.gslab.util.StringToGenderConverter"></bean>
         
       </set>
     </property>
   </bean>
-
+-->
 </beans>

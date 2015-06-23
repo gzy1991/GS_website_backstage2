@@ -7,9 +7,9 @@ import net.gslab.setting.Page;
 
 public interface BaseDao<T> {
 
-	public abstract T load(Serializable id);
-
-	public abstract List<T> loadAll();
+//	public abstract T load(Serializable id);
+//
+//	public abstract List<T> loadAll();
 
 	public abstract void save(T entity);
 

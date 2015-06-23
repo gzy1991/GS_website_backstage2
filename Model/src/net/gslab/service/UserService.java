@@ -16,5 +16,7 @@ public interface UserService extends BaseService<User>{
 	void loginSuccess(User dbUser);
 
 	List<User> listUsers(String groupName);
+
+	User search(int userId);
 	
 }

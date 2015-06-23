@@ -8,26 +8,22 @@ import java.util.List;
 
 
 
-
-
 import javax.annotation.Resource;
-
-import org.springframework.stereotype.Service;
 
 import net.gslab.dao.BaseDao;
 import net.gslab.service.BaseService;
-import net.gslab.setting.CommonConstant;
 import net.gslab.setting.Page;
 
 
 public class BaseServiceImpl<T> implements BaseService<T> {
 	
-
+	
 	protected BaseDao<T> baseDao;
 
 	@Override
 	public T find(int id) {
 		// TODO Auto-generated method stub
+		System.out.println("in the find(id)");
 		return baseDao.load(id);
 	}
 
@@ -94,27 +90,5 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 	public void setBaseDao(BaseDao<T> baseDao) {
 		this.baseDao = baseDao;
 	}
-
-	@Override
-	public Page<T> getPage(int pageIndex, int tableIndex) {
-		// TODO Auto-generated method stub
-		String table=CommonConstant.TABLE[tableIndex];
-		int pgsz=CommonConstant.PAGE_SIZE[tableIndex];
-		String hql="from "+table;
-		int offset=(pageIndex-1)*pgsz;
-		return baseDao.getPage(hql, offset, pgsz);
-		
-	}
-
-	@Override
-	public Page<T> getPage(String hql, int pageIndex,int tableIndex) {
-		// TODO Auto-generated method stub
-		String table=CommonConstant.TABLE[tableIndex];
-		int pgsz=CommonConstant.PAGE_SIZE[tableIndex];
-		int offset=(pageIndex-1)*pgsz;
-		return baseDao.getPage(hql, offset, pgsz);
-	}
-
-	
 
 }

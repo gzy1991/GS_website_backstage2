@@ -13,7 +13,11 @@
 	 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd"
 	default-lazy-init="true">
 
-	<context:annotation-config></context:annotation-config>
+	<!--  <context:annotation-config></context:annotation-config>
+	 AutowiredAnnotationBeanPostProcessor、CommonAnnotationBeanPostProcessor、
+
+PersistenceAnnotationBeanPostProcessor 以及 RequiredAnnotationBeanPostProcessor 这 4 个BeanPostProcessor。
+	-->
 	<context:property-placeholder location="classpath*:/gslab.properties" />
 
 	<context:component-scan base-package="net.gslab">	
@@ -26,7 +30,7 @@
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">
-					org.hibernate.dialect.MySQLDialect
+					org.hibernate.dialect.HSQLDialect
 				</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.connection.provider_class">
@@ -77,10 +81,10 @@
 	</bean>
 
 
-	
+	<!-- 
 	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />  
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />  
-    <!--  
+     
     <aop:config>
     	<aop:pointcut id="serviceMethod" expression="execution(*net.gslab.service..*ServiceImpl.*(..))"/>
     	<aop:advisor pointcut-ref="serviceMethod" advice-ref="txAdvice"></aop:advisor>
@@ -93,4 +97,6 @@
     </tx:advice>
   -->
 		<tx:annotation-driven transaction-manager="txManager" />
+		
+		<import resource="applicationContext-mvc.xml"></import>
 </beans>
