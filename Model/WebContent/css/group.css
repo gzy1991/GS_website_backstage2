@@ -1,7 +1,7 @@
 
 /*主体*/
 .us{
-	width: 200%;
+	width: 300%;
 	height: 1000px;
 	overflow: hidden;
 	display: block;
@@ -10,12 +10,20 @@
 .group{
 	max-width: 1400px;
 	min-width: 600px; 
-	width:50%;
+	width:33.4%;
 	height:1000px;
 	background-color:#eee8cd;
 	display: inline-block;
     vertical-align: top;/*向上对齐*/
     font-size: 16px;
+    position: relative;
+}
+.moveLeft{
+	position: absolute;
+	left:0 ;
+	top: 400px;
+	width: 100px;
+	height: 100px;
 }
 /*标题*/
 .title{
@@ -35,7 +43,7 @@
 }
 /*标题*/
 
-.fep{
+.groupName{
 	float: left;
 	font-family: impact;
 	font-size: 11vw;

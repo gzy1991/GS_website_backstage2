@@ -1,7 +1,5 @@
 package net.gslab.service.impl;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import net.gslab.dao.BaseDao;
@@ -14,7 +12,7 @@ import org.springframework.stereotype.Service;
 @Service(value="newsServiceImpl")
 public class NewsServiceImpl extends BaseServiceImpl<News> implements NewsService{
 
-	@Resource(name = "newsDaoImpl")
+	
 	private NewsDao newsDao;
 	
 	@Resource(name="newsDaoImpl")
@@ -23,13 +21,6 @@ public class NewsServiceImpl extends BaseServiceImpl<News> implements NewsServic
 		super.setBaseDao(newsDao);
 	}
 	
-	public List<News> listNews()
-	{
-		List<News> news=newsDao.find("from News");
-		System.out.println("listNews() in the UserService"+news);
-		return news;
-		
-	}
 	
 //	public NewsServiceImpl() {
 //		// TODO Auto-generated constructor stub

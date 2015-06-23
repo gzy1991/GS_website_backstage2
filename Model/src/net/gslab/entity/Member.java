@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -18,33 +19,127 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity           //指明这是数据库实体
 @Table(name="t_member")  //对应数据库的表t_member
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)            //设置cache缓存
-
 public class Member extends BaseDomain {
+	public enum Category {
+		FEP(0), XNN(1), VLAB(2), OME(3), ACA(4);
+		private int value = 0;
+
+		private Category(int value) { // 必须是private的，否则编译错误
+			this.value = value;
+		}
+
+		public static Category valueOf(int value) { // 手写的从int到enum的转换函数
+			switch (value) {
+			case 0:
+				return FEP;
+			case 1:
+				return XNN;
+			case 2:
+				return VLAB;
+			case 3:
+				return OME;
+			case 4:
+				return ACA;
+			default:
+				return null;
+			}
+		}
+
+		public int value() {
+			return this.value;
+		}
+		
+	}
+	
+	
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
     private int memberId;
 	
-	private String studentId;
+	private String grade;
 	private String memberName;
-	
-	private String account;//登陆账户
-	private String password;
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	private Date birthDate;
+	private String nowAddress;
+	private String address;
+	private String expProject;
+	private String skill;
+	private String award;
+	private String selfEvaluation;
+	private Category category;
+	private String imgUrl;
+	public int getMemberId() {
+		return memberId;
+	}
+	public void setMemberId(int memberId) {
+		this.memberId = memberId;
+	}
+	public String getGrade() {
+		return grade;
+	}
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
+	public String getMemberName() {
+		return memberName;
+	}
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
+	public Date getBirthDate() {
+		return birthDate;
+	}
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
+	}
+	public String getNowAddress() {
+		return nowAddress;
+	}
+	public void setNowAddress(String nowAddress) {
+		this.nowAddress = nowAddress;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getExpProject() {
+		return expProject;
+	}
+	public void setExpProject(String expProject) {
+		this.expProject = expProject;
+	}
+	public String getSkill() {
+		return skill;
+	}
+	public void setSkill(String skill) {
+		this.skill = skill;
+	}
+	public String getAward() {
+		return award;
+	}
+	public void setAward(String award) {
+		this.award = award;
+	}
+	public String getSelfEvaluation() {
+		return selfEvaluation;
+	}
+	public void setSelfEvaluation(String selfEvaluation) {
+		this.selfEvaluation = selfEvaluation;
+	}
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+	public String getImgUrl() {
+		return imgUrl;
+	}
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}
 	
 
 }

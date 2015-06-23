@@ -79,6 +79,5 @@ public interface BaseService<T> {
 	 *            实体对象
 	 */
 	void delete(T entity);
-    Page<T> getPage(int pageIndex,int tableIndex);
-    Page<T> getPage(String hql,int pageIndex,int tableIndex);
+
 }

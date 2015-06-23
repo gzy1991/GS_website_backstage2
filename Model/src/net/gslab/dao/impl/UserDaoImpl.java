@@ -12,11 +12,7 @@ import net.gslab.entity.User;
 @Repository("userDaoImpl")
 public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
 	public User getUserById(int id) {
-		Session session = getSession();
-		String hql = "select * from User where id=?";
-		Query query = session.createQuery(hql);
-		query.setParameter(0, id);
- 		return (User)query.uniqueResult();
+		return this.get(id);
 	}
 
 	@Override
