@@ -93,5 +93,36 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 	public void setBaseDao(BaseDao<T> baseDao) {
 		this.baseDao = baseDao;
 	}
+	@Override
+	public Page<T> getPage(int pageIndex) {
+		// TODO Auto-generated method stub
+		String className=baseDao.getEntityClass().getSimpleName();
+		int pageSize=CommonConstant.PAGE_SIZE[CommonConstant.getTable(className)];
+		return baseDao.getPage(pageIndex,pageSize);
+		
+	}
+
+	@Override
+	public Page<T> getPage(String hql, int pageIndex) {
+		// TODO Auto-generated method stub
+		String className=baseDao.getEntityClass().getSimpleName();
+		int pageSize=CommonConstant.PAGE_SIZE[CommonConstant.getTable(className)];
+		return baseDao.getPage(hql,pageIndex,pageSize);
+	}
+
+	@Override
+	public Page<T> getPage(int pageIndex, int pageSize) {
+		// TODO Auto-generated method stub
+		
+		return baseDao.getPage(pageIndex, pageSize);
+	}
+
+	@Override
+	public Page<T> getPage(String hql, int pageIndex, 
+			int pageSize) {
+		// TODO Auto-generated method stub
+		
+		return baseDao.getPage(hql, pageIndex, pageSize);
+	}
 
 }
