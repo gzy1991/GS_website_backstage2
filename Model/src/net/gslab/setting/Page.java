@@ -14,14 +14,21 @@ import net.gslab.entity.User;
 public class Page<T> implements Serializable {
 	private static final long serialVersionUID = -3930180379790344299L;
 
-	private List<T> data;
-	private long totalCount;
-
-	public Page(long totalSize,List data){
-		this.totalCount = totalSize;
+	private List<T> data;              // List数据
+	private long totalCount;      		//总记录数
+    private int pageSize;             //每页的记录数
+	public Page(long totalCount,List data,int pageSize){
+		this.totalCount = totalCount;
+		this.data = data;
+		this.pageSize=pageSize;
+	}
+	
+	/**
+	 * @param data the data to set
+	 */
+	public void setData(List<T> data) {
 		this.data = data;
 	}
-
 	/**
 	 * @return the data
 	 */
@@ -29,12 +36,24 @@ public class Page<T> implements Serializable {
 		return data;
 	}
 
+	
+
+
 	/**
-	 * @param data the data to set
+	 * @return the pageSize
 	 */
-	public void setData(List data) {
-		this.data = data;
+	public int getPageSize() {
+		return pageSize;
 	}
+
+	/**
+	 * @param pageSize the pageSize to set
+	 */
+	public void setPageSize(int pageSize) {
+		this.pageSize = pageSize;
+	}
+
+	
 
 	/**
 	 * @return the totalCount
