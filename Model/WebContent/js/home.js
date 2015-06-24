@@ -34,7 +34,7 @@ function loadImage (urlArray) {   //异步加载图片
 			imgArrays[i].onload=null;	
 		}	
 		imgArrays[i].src=urlArray[i].imgUrl;//图片对象地址
-		personNames[i].innerText=urlArray[i].userName;
+		personNames[i].innerText=urlArray[i].memberName;
 	}
 
 }
@@ -46,6 +46,7 @@ function sendRequest(){
  	request.onreadystatechange=function(){
  		if(request.readyState==4){
  			if((request.status>=200&&request.status<=300)||request.status==304){
+ 				//alert("请求成功");
  				var jsonStr=request.responseText;
  				var imgArray=JSON.parse(jsonStr);
  				loadImage (imgArray) ; //预加载图片并显示

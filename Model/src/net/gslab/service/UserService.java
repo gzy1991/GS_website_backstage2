@@ -18,5 +18,7 @@ public interface UserService extends BaseService<User>{
 	List<User> listUsers(String groupName);
 
 	User search(int userId);
+
+	List<User> listUsersByAuth(String string);
 	
 }

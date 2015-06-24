@@ -22,7 +22,7 @@ import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.Assert;
 
-@Repository("baseDaoImpl")
+//@Repository("baseDaoImpl")
 public abstract class BaseDaoImpl<T> implements BaseDao<T> {
 	private Class<T> entityClass;
 	@Resource(name = "hibernateTemplate")//相当于set方法
@@ -38,11 +38,11 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
 		entityClass = (Class) params[0];
 	}
 
-//	@Override
-//	public T load(Serializable id) {//返回一个数据库里的实体，Serializable是一个接口，可序列化
-//		System.out.println("in the load(id)");
-//		return (T) getHibernateTemplate().load(entityClass, id);
-//	}
+	@Override
+	public T load(Serializable id) {//返回一个数据库里的实体，Serializable是一个接口，可序列化
+		System.out.println("in the load(id)");
+		return (T) getHibernateTemplate().load(entityClass, id);
+	}
 
 	public T get(Serializable id) {
 		return (T) this.getHibernateTemplate().get(entityClass, id);
@@ -53,12 +53,12 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
 	 * 
 	 * @see net.gslab.dao.impl.BaseDao#loadAll()
 	 */
-//	@Override
-//	public List<T> loadAll() {
-//		//使用这个方法会出BUG...调试中
-//		System.out.println("in the BaseDaoImpl");
-//		return this.getHibernateTemplate().loadAll(entityClass);
-//	}
+	@Override
+	public List<T> loadAll() {
+		//使用这个方法会出BUG...调试中
+		System.out.println("in the BaseDaoImpl");
+		return this.getHibernateTemplate().loadAll(entityClass);
+	}
 	
 
 	/*

@@ -21,6 +21,12 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 	@Resource(name = "userDaoImpl")
 	private UserDao userDao;
 	
+	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!一定要在service中写上层dao的set
+	public void setUserDao(UserDao userDao) {
+		System.out.println("in the setUserDao of UserServiceImpl");
+		super.setBaseDao(userDao);//!!!!!!!!!!!!!!!!!!!!!!!!
+		this.userDao = userDao;
+	}
 	
 	//这个类继承userService,接口也要继承BaseDao，否则出问题
 	public void register(User user){
@@ -79,6 +85,21 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 	public User search(int id){
 		User user = userDao.getUserById(id);
 		return user;
+	}
+
+	@Override
+	public List<User> listUsersByAuth(String string) {
+		// TODO Auto-generated method stub
+		if(string.equals("authorised")){
+			List<User> users = userDao.find("from User u where u.checkUp=1");
+			return users;
+		}else if(string.equals("unauthorised")){
+			List<User> users = userDao.find("from User u where u.checkUp=0");
+			return users;
+		}else{
+			System.out.println("no such findByAuth condition");
+			return null;
+			}
 	}
 
 }

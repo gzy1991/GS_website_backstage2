@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+      <%@ page import="java.util.*,net.gslab.entity.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -54,18 +55,31 @@
   </table>
   <HR style="FILTER:  progid:DXImageTransform.Microsoft.Shadow(color:#f6ae56,direction:145,strength:15)"  >
   <table class="tableB" border="1" >
+    <%
+ 	List<User> users = new ArrayList<User>();
+ 	users =(List<User>)request.getAttribute("users");
+ 	if(users!=null){
+ 	for(int i=0;i<users.size();i++){
+ 		%>
    <tr class="tr">
     <td width="10%"><input type="checkbox" name="bike" /></td>
-    <td width="8%">13级</td>
-    <td width="8%">AAA</td>
+    
+    <td width="8%"><%=users.get(i).getGrade() %></td>
+    <td width="8%"><%=users.get(i).getUserName() %></td>
     <td width="10%">软件工程</td>
-    <td width="8%">FEP</td>
-    <td width="10%">AAA@qq.com</td>
-    <td width="10%">12345678</td>
-    <td width="12%">2015-10-10 22:00</td>
-    <td width="8%">未通过</td>
-    <td width="8%"><a href="http://www.baidu.com/">查看</a></td>
+    <td width="8%"><%=users.get(i).getCategory() %></td>
+    <td width="10%"><%=users.get(i).getEmail() %></td>
+    <td width="10%"><%=users.get(i).getMobilePhone() %></td>
+    <td width="12%"><%=users.get(i).getSetUpTime() %></td>
+    <td width="8%">已通过</td>
+    <td width="8%"><a href="detail?userId=<%=users.get(i).getUserId() %>">查看</a></td>
+
    </tr>
+<%  	}
+ 	}
+ 
+ 
+ %>
 </table>
   <div class="bottom" id="setpage">
 <!--       <a class="aa" href="http://www.baidu.com/">首页</a>

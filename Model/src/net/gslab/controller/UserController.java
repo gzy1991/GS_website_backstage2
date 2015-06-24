@@ -39,14 +39,24 @@ public class UserController extends BaseController {
 		return "home";
 	}
 	
-	@RequestMapping(value="/userList",method=RequestMethod.GET)
-	public ModelAndView show(HttpServletRequest request){
+	@RequestMapping(value="/userListUnAuth",method=RequestMethod.GET)
+	public ModelAndView showUnAuth(HttpServletRequest request){
 		System.out.println("in the show");
-		List<User> users=userService.listUsers();
+		List<User> users=userService.listUsersByAuth("unauthorised");
 		System.out.println("result num: "+users.size());
 		ModelMap modelMap = new ModelMap();
 		modelMap.addAttribute("users",users);
 		return new ModelAndView("MA_applay",modelMap);
+	}
+	
+	@RequestMapping(value="/userListAuth",method=RequestMethod.GET)
+	public ModelAndView showAuth(HttpServletRequest request){
+		System.out.println("in the show of Auth");
+		List<User> users=userService.listUsersByAuth("authorised");
+		System.out.println("result num: "+users.size());
+		ModelMap modelMap = new ModelMap();
+		modelMap.addAttribute("users",users);
+		return new ModelAndView("MA_haveApplayed",modelMap);
 	}
 	
 	@RequestMapping(value="/detail",method=RequestMethod.GET)

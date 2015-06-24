@@ -57,6 +57,7 @@
     <%
  	List<User> users = new ArrayList<User>();
  	users =(List<User>)request.getAttribute("users");
+ 	if(users!=null){
  	for(int i=0;i<users.size();i++){
  		%>
    <tr class="tr">
@@ -74,6 +75,7 @@
 
    </tr>
 <%  	}
+ 	}
  
  
  %>

@@ -178,7 +178,7 @@
     <h1>实验室诚聘</h1>
 
     <div class="whiteMan">
-        <img src="../images/employ.jpg">
+        <a href="aplay.jsp"><img src="../images/employ.jpg"></a>
     </div>
     <div class="words">
         <img src="../images/words.jpg">
