@@ -28,6 +28,12 @@ package net.gslab.setting;
 	   public static final int BOARD=0,NEWS=1,POST=2,TOPIC=3,USER=4;
 	   public static final int []PAGE_SIZE={3,3,3,3,3};
 	   public static final String[] TABLE={"Board","News","Post","Topic","User"};
+	   public static int getTable(String className)
+	   {
+		   for(int i=0;i<TABLE.length;i++)
+			   if(TABLE[i].equals(className)) return i;
+		   return -1;
+	   }
 	 
 	}
 
