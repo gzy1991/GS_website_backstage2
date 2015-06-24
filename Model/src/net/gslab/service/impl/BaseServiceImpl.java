@@ -10,6 +10,7 @@ import java.util.List;
 
 
 
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -96,23 +97,35 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 	}
 
 	@Override
-	public Page<T> getPage(int pageIndex, int tableIndex) {
+	public Page<T> getPage(int pageIndex) {
 		// TODO Auto-generated method stub
-		String table=CommonConstant.TABLE[tableIndex];
-		int pgsz=CommonConstant.PAGE_SIZE[tableIndex];
-		String hql="from "+table;
-		int offset=(pageIndex-1)*pgsz;
-		return baseDao.getPage(hql, offset, pgsz);
+		String className=baseDao.getEntityClass().getSimpleName();
+		int pageSize=CommonConstant.PAGE_SIZE[CommonConstant.getTable(className)];
+		return baseDao.getPage(pageIndex,pageSize);
 		
 	}
 
 	@Override
-	public Page<T> getPage(String hql, int pageIndex,int tableIndex) {
+	public Page<T> getPage(String hql, int pageIndex) {
 		// TODO Auto-generated method stub
-		String table=CommonConstant.TABLE[tableIndex];
-		int pgsz=CommonConstant.PAGE_SIZE[tableIndex];
-		int offset=(pageIndex-1)*pgsz;
-		return baseDao.getPage(hql, offset, pgsz);
+		String className=baseDao.getEntityClass().getSimpleName();
+		int pageSize=CommonConstant.PAGE_SIZE[CommonConstant.getTable(className)];
+		return baseDao.getPage(hql,pageIndex,pageSize);
+	}
+
+	@Override
+	public Page<T> getPage(int pageIndex, int pageSize) {
+		// TODO Auto-generated method stub
+		
+		return baseDao.getPage(pageIndex, pageSize);
+	}
+
+	@Override
+	public Page<T> getPage(String hql, int pageIndex, 
+			int pageSize) {
+		// TODO Auto-generated method stub
+		
+		return baseDao.getPage(hql, pageIndex, pageSize);
 	}
 
 	

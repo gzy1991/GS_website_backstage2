@@ -37,9 +37,10 @@ public class BoardDaoTest extends JUnitDaoBase {
     	List<Board> boards = new ArrayList<Board>();
     	//boards=borderDao.find("from Board");
     	
-    	Page<Board> page= borderDao.getPage("from Board b where b.boardName like '%new%'",0,2);
+    	Page<Board> page= borderDao.getPage("from Board b where b.boardName like '%new%'",1,2);
     	System.out.println("Board has "+page.getTotalCount());
     	boards=page.getData();
+    	System.out.println(boards.size());
     	for(Board temp:boards){
     		System.out.println(temp.getBoardName());
     	}

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -167,22 +168,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 
 
 
-	@Override
-	public Page getPage(final String hql, final int offset, final int length) {
-		// TODO Auto-generated method stub
-		int total=getCount(hql);
-		 List list = getHibernateTemplate().executeFind(new HibernateCallback() {     
-			    public Object doInHibernate(Session session)     
-			      throws HibernateException, SQLException {     
-			     Query query = session.createQuery(hql);     
-			     query.setFirstResult(offset);     
-			     query.setMaxResults(length);     
-			     List list = query.list();     
-			     return list;     
-			    }     
-			   });     
-		 return new Page(total,list);
-	}
+	
 
 
 
@@ -193,4 +179,46 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		List list=find(hql);
 		return Integer.parseInt(list.get(0).toString());
 	}
+
+
+
+	@Override
+	public Class<T> getEntityClass() {
+		// TODO Auto-generated method stub
+		return entityClass;
+	}
+
+
+
+	@Override
+	public Page<T> getPage(int pageIndex, final int pageSize) {
+		// TODO Auto-generated method stub
+		final String hql="from "+getEntityClass().getSimpleName();
+		int total=getCount(hql);
+		final int offset=(pageIndex-1)*pageSize;
+		 List list = getHibernateTemplate().executeFind(new HibernateCallback() {     
+			    public Object doInHibernate(Session session)     
+			      throws HibernateException, SQLException {     
+			     Query query = session.createQuery(hql);     
+			     query.setFirstResult(offset);     
+			     query.setMaxResults(pageSize);     
+			     List list = query.list();     
+			     return list;     
+			    }     
+			   });     
+		 return new Page(total,list,pageSize);
+	}
+	@Override
+	public Page getPage(final String hql, final int pageIndex, final int pageSize) {
+		// TODO Auto-generated method stub
+		List list=find(hql);
+		List list2=new ArrayList<T>();
+		int offset=(pageIndex-1)*pageSize;
+		for(int i=offset;(i<(offset+pageSize)&&i<list.size());i++)
+			list2.add(list.get(i));
+		return new Page(list.size(),list2,pageSize);
+	}
+
+
+
 }

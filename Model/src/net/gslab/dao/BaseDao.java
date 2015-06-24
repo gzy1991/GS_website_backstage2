@@ -20,6 +20,8 @@ public interface BaseDao<T> {
 	public abstract List<T> find(String hql);
 
 	public abstract List<T> find(String hql, Object... params);
+	public abstract Class<T> getEntityClass();
 	public abstract int getCount(String hql);
-    public abstract Page getPage(final String hql,final int offset,final int length);
+	public abstract Page<T> getPage(int pageIndex,int pageSize);
+    public abstract Page<T> getPage(final String hql,int pageIndex,int pageSize);
 }
