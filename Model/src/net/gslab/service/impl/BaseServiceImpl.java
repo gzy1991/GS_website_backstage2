@@ -8,16 +8,19 @@ import java.util.List;
 
 
 
+
 import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
 
 import net.gslab.dao.BaseDao;
 import net.gslab.service.BaseService;
 import net.gslab.setting.Page;
 
-
+@Service("baseServiceImpl")
 public class BaseServiceImpl<T> implements BaseService<T> {
 	
-	
+
 	protected BaseDao<T> baseDao;
 
 	@Override
