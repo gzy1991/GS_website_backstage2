@@ -1,4 +1,4 @@
-package net.gslab.controller;
+﻿package net.gslab.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -37,5 +37,19 @@ public class NewsController extends BaseController{
 		
 		newsService.save(news);
 	}
+       @RequestMapping(value = "/getPage", method = RequestMethod.GET)
+	public @ResponseBody Page<News>  list(HttpServletRequest request,
+			HttpServletResponse response,@RequestParam(value="pageIndex")Integer pageIndex) {
+		/**
+		 * @param pageIndex   请求的页码
+         * @param pageSize   每页的记录条数
+         * @param 
+		 */
+		//return newsService.getPage(pageIndex);  //使用默认的pageSize
+		return newsService.getPage(pageIndex,2);  //自定义pageSize为2  
+		//return newsService.getPage("from News e where e.newsName='me'",pageIndex); // 使用默认的pageSize
+		//return newsService.getPage("from News e where e.newsName='me'",pageIndex,1);//自定义pageSize为1
+	}
+
 	
 }

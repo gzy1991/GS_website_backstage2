@@ -30,7 +30,7 @@ PersistenceAnnotationBeanPostProcessor 以及 RequiredAnnotationBeanPostProcesso
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">
-					org.hibernate.dialect.HSQLDialect
+					org.hibernate.dialect.MySQLDialect
 				</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.connection.provider_class">
