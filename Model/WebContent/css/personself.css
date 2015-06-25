@@ -1,15 +1,16 @@
-.body{
-	width:100%;
-	height:100%;
-	display:block;
-	
-}
 .personself{
+	width:33.3%;
+	height:1000px;
+	display:inline-block;
+	vertical-align: top;/*向上对齐*/
+	background-color:#ded6c0;	
+	position: relative;
+}
+.pContent{
 	width:50%;
-	height:100%;
-	background-color:#ded6c0;
+	height:80%;
 	outline-style:solid;
-	outline-color:white;
+	/*outline-color:white;*/
 	outline-width:10px;
 	margin-left:25%;
 	margin-top:5%;
@@ -23,7 +24,7 @@
 	height:250px;
 	margin-left: 4%;
 	margin-top:40px;
-	background-image: url("../images/photo.jpg");
+	/*background-image: url("../images/photo.jpg");*/
     float: left;
      -webkit-box-shadow: 1px 1px 20px 1px #4e4e4e;
 }
@@ -38,9 +39,12 @@
 	font-family:"华文琥珀";
 	color:RGB(88,84,80);}
 .part1 p{
-	line-height: 30%;
+	line-height: 120%;
 }
-.name{
+.part2 p{
+	line-height: 200%;
+}
+.userName{
 	width:200px;
 	height:70px;
 	font-size:300%;
@@ -55,10 +59,13 @@
 	font-family:"华文琥珀";
 	color:RGB(88,84,80)
 }
-.photo{
+.pPhoto{
 	width: 160px;
 	height: 180px;
 	margin:auto;
 	margin-top: 25px;
 }
 	
+.project{
+	text-indent: 2em;
+}

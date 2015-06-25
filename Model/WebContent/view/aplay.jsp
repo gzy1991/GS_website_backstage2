@@ -5,8 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>高思实验室2015春季招新</title>
-<script language="javascript" type="text/javascript"
-	src="js/jquery-2.1.4.min.js"></script>
+<script language="javascript" type="text/javascript"src="js/jquery-2.1.4.min.js"></script>
 <!-- <script language="javascript" type="text/javascript" src="My97DatePicker/WdatePicker.js"></script> -->
 <style type="text/css">
 * {

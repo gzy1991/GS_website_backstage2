@@ -14,20 +14,23 @@
 
 .newsContent
 {
-	width:100%;
-	height:auto;
+	width:33.3%;
+	height:800px;
+	display: inline-block;
+    vertical-align: top;/*向上对齐*/
 	background-color:#3D3B3C;
-	padding-left:2%;
-	padding-top:5%;
-	padding-bottom:5%;
+/* 	padding-left:2%; */
+	padding-top:2%;
+	/* padding-bottom:5%; */
+	position: relative;
 }
 
 
-.container
+.newscontainer
 {
 	width:86%;
 	background-color:#3D3B3C;
-	padding:5%;
+	padding-left:6%;
 }
 
 .article
@@ -39,21 +42,21 @@
 	word-wrap:break-word;
 }
 
-.date
+.ncDate
 {
 	text-align:center;
 	color:#FEFCFC;
-	font-size:18px;
+	font-size:18px !important;
 	font-family:'myfont2';
 }
 
 .content
 {
 	width:auto;
-	padding:5%;
+	padding:2%;
 }
 
-.title
+.newsName
 {
 	color:#848583;
 	font-size:30px;
