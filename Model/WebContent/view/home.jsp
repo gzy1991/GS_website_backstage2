@@ -321,7 +321,7 @@
         <img src="../images/words.jpg">
     </div>
 </div>
-    <script type="text/javascript" src="js/setpage.js"></script>
+    <script type="text/javascript" src="../js/setpage.js"></script>
 </body>
 </html>
 
