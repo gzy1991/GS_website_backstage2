@@ -1,6 +1,7 @@
 package net.gslab.service.impl;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 import net.gslab.dao.BaseDao;
 import net.gslab.dao.NewsDao;
@@ -20,6 +21,22 @@ public class NewsServiceImpl extends BaseServiceImpl<News> implements NewsServic
 		this.newsDao = newsDao;
 		super.setBaseDao(newsDao);
 	}
+	
+	public List<News> listNews()
+	{
+		List<News> news=newsDao.find("from News");
+		System.out.println("listNews() in the UserService"+news);
+		return news;
+		
+	}
+	
+	public News getByID(int id)//根据新闻id，获取新闻 ，关振宇
+	{
+		return newsDao.load(id);
+		
+	}
+	
+	
 	
 	
 //	public NewsServiceImpl() {
