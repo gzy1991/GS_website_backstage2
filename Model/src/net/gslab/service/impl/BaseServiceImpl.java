@@ -9,19 +9,24 @@ import java.util.List;
 
 
 
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
 import net.gslab.dao.BaseDao;
 import net.gslab.service.BaseService;
+import net.gslab.setting.CommonConstant;
 import net.gslab.setting.Page;
 
 @Service("baseServiceImpl")
 public class BaseServiceImpl<T> implements BaseService<T> {
-	
 
-	protected BaseDao<T> baseDao;
+	public BaseDao<T> getBaseDao() {
+		return baseDao;
+	}
+
+	private BaseDao<T> baseDao;
 
 	@Override
 	public T find(int id) {
@@ -29,14 +34,18 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 		System.out.println("in the find(id)");
 		return baseDao.load(id);
 	}
-
+	@Override
+	public T get(int id) {
+		// TODO Auto-generated method stub
+		System.out.println("in the find(id)");
+		return baseDao.get(id);
+	}
 	@Override
 	public List<T> findAll() {
 		// TODO Auto-generated method stub
 		System.out.println("in the BaseServiceImpl findAll");
 		return baseDao.loadAll();
 	}
-
 	@Override
 	public List<T> findList(int... ids) {
 		// TODO Auto-generated method stub
@@ -78,10 +87,10 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 	}
 
 	@Override
-	public void delete(int id) {
+	public boolean delete(int id) {
 		// TODO Auto-generated method stub
 		T entity = baseDao.load(id);
-		baseDao.remove(entity);
+		return baseDao.remove(entity);
 	}
 
 	@Override
@@ -89,7 +98,6 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 		// TODO Auto-generated method stub
 		baseDao.remove(entity);
 	}
-
 	public void setBaseDao(BaseDao<T> baseDao) {
 		this.baseDao = baseDao;
 	}

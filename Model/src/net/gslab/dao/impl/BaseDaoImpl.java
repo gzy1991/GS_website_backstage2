@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -17,6 +18,7 @@ import net.gslab.setting.Page;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.springframework.dao.DataAccessException;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.stereotype.Repository;
@@ -78,8 +80,13 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
 	 * @see net.gslab.dao.impl.BaseDao#remove(T)
 	 */
 	@Override
-	public void remove(T entity) {
+	public boolean remove(T entity) {
+		try{
 		this.getHibernateTemplate().delete(entity);
+		}catch(DataAccessException e){
+			return false;
+		}
+		return true;
 	}
 
 	/*
