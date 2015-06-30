@@ -13,7 +13,7 @@ public interface BaseDao<T> {
 
 	public abstract void save(T entity);
 
-	public abstract void remove(T entity);
+	public abstract boolean remove(T entity);
 
 	public abstract void update(T entity);
 
@@ -24,5 +24,7 @@ public interface BaseDao<T> {
 	public abstract int getCount(String hql);
 	public abstract Page<T> getPage(int pageIndex,int pageSize);
     public abstract Page<T> getPage(final String hql,int pageIndex,int pageSize);
+
+	public abstract T get(Serializable id);
 	
 }

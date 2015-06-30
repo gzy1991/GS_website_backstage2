@@ -69,8 +69,9 @@ public interface BaseService<T> {
 	 * 
 	 * @param id
 	 *            ID
+	 * @return 
 	 */
-	void delete(int id);
+	boolean delete(int id);
 
 	/**
 	 * 删除实体对象
@@ -95,5 +96,7 @@ public interface BaseService<T> {
      * @return
      */
     Page<T> getPage(String hql,int pageIndex,int pageSize);
+
+	T get(int id);
 
 }
