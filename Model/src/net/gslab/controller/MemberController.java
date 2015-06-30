@@ -30,7 +30,7 @@ public class MemberController extends BaseController{
 		this.memberService = memberService;
 	}
 	@RequestMapping(value="/adduser",method=RequestMethod.POST)
-	public @ResponseBody String adduser(String loadname,String password,String password2,String category){
+	public boolean adduser(String loadname,String password,String password2,String category){
 		Member member=new Member();
 		if(password.equals(password2)){
 			member.setLoadname(loadname);
@@ -41,9 +41,9 @@ public class MemberController extends BaseController{
 			member.setMemberId(id);
 			memberService.save(member);
 		}
-		return SUCCESS;
+		return true;
 		}
-		return FAILED;
+		return false;
 	}
 	
 	@RequestMapping(value="/findAllmember",method=RequestMethod.GET)
@@ -54,13 +54,12 @@ public class MemberController extends BaseController{
 	}
 	
 	@RequestMapping(value="/deleteMember",method=RequestMethod.POST)
-	public @ResponseBody String deleteMember(String studentId){
+	public void deleteMember(String studentId){
 		String stat;
 		if(true==memberService.delete(Integer.parseInt(studentId))){
-		stat=SUCCESS;
-		return SUCCESS;
+	
 		}
-		return FAILED;
+		
 	}
 	
 	@RequestMapping(value="/findOne",method=RequestMethod.POST)

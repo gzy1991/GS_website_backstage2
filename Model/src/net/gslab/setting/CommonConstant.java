@@ -34,6 +34,7 @@ package net.gslab.setting;
 			   if(TABLE[i].equals(className)) return i;
 		   return -1;
 	   }
+	
 	 
 	}
 

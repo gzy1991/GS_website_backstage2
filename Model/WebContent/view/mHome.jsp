@@ -21,7 +21,7 @@
 <div class="tab">
 	<ul>
 <!-- 		<li><a href="#" target="iframe">首页</a></li> -->
-		<li><a id="#managerPerson" class="nav" href="MP_searchPersonList.html" target="iframe">人员管理</a></li>
+		<li><a id="#managerPerson" class="nav" href="MP_searchPersonList.jsp" target="iframe">人员管理</a></li>
 		<li><a id="#managerNews" class="nav" href="MN_launchNews.html" target="iframe">新闻管理</a></li>
 		<li><a id="#managerNewPerson"class="nav" href="userListUnAuth" target="iframe" >招新管理</a></li>
 		<li><a id="#managerSysterm" class="nav">系统</a></li>
@@ -32,9 +32,9 @@
 	<div class="menuList" id="managerPerson">
 		<ul>
 			<li>人员管理</li>
-			<li><a href="MP_searchPersonList.html" target="iframe">查看人员</a></li>
-			<li><a href="MP_addPerson.html"target="iframe">添加人员</a></li>
-			<li><a href="MJ_group.html" class="menuListA"target="iframe">查看分组</a></li>
+			<li><a href="MP_searchPersonList.jsp" target="iframe">查看人员</a></li>
+			<li><a href="MP_addPerson.jsp"target="iframe">添加人员</a></li>
+			<li><a href="MJ_group.jsp" class="menuListA"target="iframe">查看分组</a></li>
 			<li><a href="MJ_addgroup.html" class="menuListA"target="iframe">添加分组</a></li>
 		</ul>
 	</div>
@@ -86,7 +86,7 @@ function SetWinHeight(ob) {                     //自动调整iframe高度
 } 
  
 </script>
-	<iframe class="iframe" src="MP_searchPersonList.html" name="iframe" scrolling="no" frameborder="no" onload="SetWinHeight(this)"></iframe>
+	<iframe class="iframe" src="MP_searchPersonList.jsp" name="iframe" scrolling="no" frameborder="no" onload="SetWinHeight(this)"></iframe>
 </div>
 <div class="footer">
 	<div class="footerContent">
