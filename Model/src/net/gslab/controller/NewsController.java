@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller(value="newsController")
-@RequestMapping("/news")
+@RequestMapping("/view")
 public class NewsController extends BaseController{
 
 	@Resource(name="newsServiceImpl")
