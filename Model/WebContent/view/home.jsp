@@ -140,7 +140,7 @@
     <div class="message">
         <div class="img">
             <div class="pPhoto">
-              <img src="../images/gzy.jpg" width="160" height="180" >
+              <img src="" width="160" height="180" class="personselfImg" >
             </div>
         </div>
     

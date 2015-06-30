@@ -205,7 +205,7 @@ function loadImgList(groupName) //发送请求  动态加载组员图片列表  
         {
           if (xmlhttp.readyState==4 && xmlhttp.status==200)
              {
-                var jsonStr=request.responseText;
+                var jsonStr=xmlhttp.responseText;
                 imgArray=JSON.parse(jsonStr);
                 loadImage(imgArray) ; //预加载图片并显示/////////////待更改                
              }
@@ -284,7 +284,7 @@ $(".photoLink").click(function(){  //点击组的图片
 
     //var imgArray = ["images/GCL.jpg","images/GZY.jpg","images/HG.jpg","images/HMC.jpg","images/LDS.jpg","images/MYW.jpg","images/ZH.jpg","images/ZK.png","images/ZX.png"];
 	/*****************************异步加载图片***************************/
-	// loadImgList(groupName); ?????????????????
+	loadImgList(groupName); 
 	return false;
 });
 $(".memberPhoto").click(function(){      //点几个人照片，战士个人详细信息
@@ -294,18 +294,19 @@ $(".memberPhoto").click(function(){      //点几个人照片，战士个人详�
 	$("body").animate({
  		scrollLeft:(firstWidth+secondWidth+30)  //让body的scrollTop等于pos的top，就实现了滚动
  	},500);
- 	for(user in imgArray){
-		if(user.userName==n){
-			$(".userName").text(user.userName);
-			$(".birthday").text("出生年月："+user.birthday);
-			$(".grade").text("年级："+user.grade);
-			$(".nowAddress").text("现居地："+user.nowAddress);
-			$(".address").text("户口地："+user.address);
-			$(".email").text("Email："+user.email);
-			$(".mobilePhone").text("电话："+user.mobilePhone);
-			$(".skill").text("个人技能："+user.skill);
-			$(".awards").text("获得奖励"+user.awards);
-			$(".selfEvaluation").text("自我评价："+user.selfEvaluation);		
+ 	for(var user in imgArray){
+		if(imgArray[user].memberName==n){
+			$(".personselfImg").attr("src",imgArray[user].imgUrl);
+			$(".userName").text(imgArray[user].memberrName);
+			$(".birthday").text("出生年月："+imgArray[user].birthday);
+			$(".grade").text("年级："+imgArray[user].grade);
+			$(".nowAddress").text("现居地："+imgArray[user].nowAddress);
+			$(".address").text("户口地："+imgArray[user].address);
+			$(".email").text("Email："+imgArray[user].email);
+			$(".mobilePhone").text("电话："+imgArray[user].mobilePhone);
+			$(".skill").text("个人技能："+imgArray[user].skill);
+			$(".awards").text("获得奖励:"+imgArray[user].award);
+			$(".selfEvaluation").text("自我评价："+imgArray[user].selfEvaluation);		
 		}
 	}
 	return false;
