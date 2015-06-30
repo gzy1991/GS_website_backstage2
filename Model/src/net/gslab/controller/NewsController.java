@@ -47,8 +47,10 @@ public class NewsController extends BaseController{
 		
 		newsService.save(news);
 	}
+	
+	//分页例子，刘定顺，例子可以用
        @RequestMapping(value = "/getPage", method = RequestMethod.GET)
-	   public @ResponseBody Page<News>  list(HttpServletRequest request,
+	   public @ResponseBody List<News>  list(HttpServletRequest request,
 			HttpServletResponse response,@RequestParam(value="pageIndex")Integer pageIndex) {
 		/**
 		 * @param pageIndex   请求的页码
@@ -56,11 +58,43 @@ public class NewsController extends BaseController{
          * @param 
 		 */
 		//return newsService.getPage(pageIndex);  //使用默认的pageSize
-		return newsService.getPage(pageIndex,2);  //自定义pageSize为2  
+    	Page page=newsService.getPage(pageIndex,2);  //自定义pageSize为2 
+    	List<News> data=page.getData();
+    	for(int i=0;i<data.size();i++)
+		{
+			News temp=data.get(i);
+			temp.setContent(null);
+		}		
+		return page.getData();
 		//return newsService.getPage("from News e where e.newsName='me'",pageIndex); // 使用默认的pageSize
 		//return newsService.getPage("from News e where e.newsName='me'",pageIndex,1);//自定义pageSize为1
 	}
 
+       
+     //分页，返回首页显示的9条最新新闻
+       @RequestMapping(value = "/get9Page", method = RequestMethod.GET)
+	   public @ResponseBody List<News>  list2(HttpServletRequest request,
+			HttpServletResponse response) {
+    	   //,@RequestParam(value="pageIndex")Integer pageIndex
+		/**
+		 * 
+		 * @param pageIndex   请求的页码
+         * @param pageSize   每页的记录条数
+         * @param 
+		 */
+    	Page page=newsService.getPage("from News n order by n.publishDate desc",1,9); 	//按日期排序	
+		List<News> data=page.getData();
+		
+		//把不用的属性设置为null(主要是content，其余占用的空间小，减少占用的带宽)
+		for(int i=0;i<data.size();i++)
+		{
+			News temp=data.get(i);
+			temp.setContent(null);
+		}		
+		return page.getData();
+		
+	}
+       
        
     //删除新闻,前台传入ID，根据ID删除新闻，删除后，检验是否删除成功
    	@RequestMapping("/deleteByID")
@@ -70,7 +104,7 @@ public class NewsController extends BaseController{
    		newsService.delete(id) ;
    	}
    	
-  //返回全部新闻 ，返回json串
+  //返回全部新闻 ，返回json串，这就是一个测试
    	@RequestMapping(value="/newsList") 
 	public  @ResponseBody List<News> show(Model model)  //后台往前台传输数据时用model
 	{
@@ -87,27 +121,9 @@ public class NewsController extends BaseController{
 	
 	{
 		System.out.println(id);
-		return newsService.find(id);
+		return newsService.getByID(id);
 	}
 	
-/*
-	@RequestMapping(value = "/getPage", method = RequestMethod.GET)  //例子，刘定顺用这个测试page功能
-	public @ResponseBody Page<News>  list(HttpServletRequest request,
-			HttpServletResponse response,@RequestParam(value="pg")Integer pg) { //pg,是指第几页
-		System.out.println(pg);
-		return newsService.getPage(pg,tableIndex);
-	}
-*/
 	
-/*
-	@RequestMapping("/get9news")
-	public @ResponseBody Page<News>  list_9news(HttpServletRequest request,
-			HttpServletResponse response,@RequestParam(value="pg")Integer pg) 
-			//pg:参数，前台有这个参数，是指第几页；@RequestParam：必须有的参数
-	{
-		System.out.println(pg);
-		return newsService.getPage(pg,tableIndex); //tableIndex，指明是哪个数据表
-	}
-*/
 	
 }

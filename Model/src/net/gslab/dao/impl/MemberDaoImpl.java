@@ -11,6 +11,7 @@ import net.gslab.dao.UserDao;
 import net.gslab.entity.Member;
 import net.gslab.entity.User;
 
+@SuppressWarnings("unchecked")
 @Repository("memberDaoImpl")
 public class MemberDaoImpl extends BaseDaoImpl<Member> implements MemberDao {
 	

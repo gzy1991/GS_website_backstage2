@@ -13,14 +13,12 @@ import net.gslab.entity.News;
 public class NewsDaoImpl extends BaseDaoImpl<News> implements NewsDao{
 	
 	
-    public News getNewsByID(int id)//获取新闻
+    public News getNewsById(int id)//获取新闻
     {
-    	Session session= getSession();//获取session
-    	String hql = "selecrt * from News where id = ?";//设置sql查询语句
-    	Query query = session.createQuery(hql);//创建一个查询
-    	query.setParameter(0, id);  //固定用法?
+		System.out.println("in the dao_getNewsById(id)");
+
+    	return this.get(id);
     	
-    	return (News)query.uniqueResult();//?
     }
 	
 	public List<News> queryNewsByNewsId(int id)//查找
