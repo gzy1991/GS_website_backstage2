@@ -55,7 +55,7 @@ public class LoginController extends BaseController{
 				toUrl="/view/success.jsp";
 			}
 			mav.setViewName("redirect:"+toUrl);
-		}
+		//}
 		//System.out.println(ERROR_MSG_KEY);
 		return mav;
 	}

@@ -23,6 +23,8 @@ public class Page<T> implements Serializable {
 		this.pageSize=pageSize;
 	}
 	
+	
+
 	/**
 	 * @param data the data to set
 	 */

@@ -12,16 +12,20 @@ import net.gslab.entity.News;
 @Repository(value="newsDaoImpl")
 public class NewsDaoImpl extends BaseDaoImpl<News> implements NewsDao{
 	
-	
-    public News getNewsByID(int id)//获取新闻
+	@Override
+    public News getNewsById(int id)//获取新闻
     {
-    	Session session= getSession();//获取session
-    	String hql = "selecrt * from News where id = ?";//设置sql查询语句
-    	Query query = session.createQuery(hql);//创建一个查询
-    	query.setParameter(0, id);  //固定用法?
+		System.out.println("in the dao_getNewsById(id)");
+
     	
-    	return (News)query.uniqueResult();//?
+		return this.get(id);
     }
+	
+	@Override
+	public News getNewsByID(int id) {
+		// TODO Auto-generated method stub
+		return this.get(id);
+	}
 	
 	public List<News> queryNewsByNewsId(int id)//查找
 	{
@@ -31,6 +35,9 @@ public class NewsDaoImpl extends BaseDaoImpl<News> implements NewsDao{
 		return news;
 		
 	}
-   
+
+	
+
+	
 
 }

@@ -1,6 +1,7 @@
 package net.gslab.service.impl;
 
 import javax.annotation.Resource;
+
 import java.util.List;
 
 import net.gslab.dao.BaseDao;
@@ -13,9 +14,10 @@ import org.springframework.stereotype.Service;
 @Service(value="newsServiceImpl")
 public class NewsServiceImpl extends BaseServiceImpl<News> implements NewsService{
 
-	
+	@Resource(name = "newsDaoImpl")
 	private NewsDao newsDao;
 	
+	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!一定要在service中写上层dao的set
 	@Resource(name="newsDaoImpl")
 	public void setNewsDao(NewsDao newsDao) {
 		this.newsDao = newsDao;
@@ -32,7 +34,8 @@ public class NewsServiceImpl extends BaseServiceImpl<News> implements NewsServic
 	
 	public News getByID(int id)//根据新闻id，获取新闻 ，关振宇
 	{
-		return newsDao.load(id);
+		System.out.println("in the service_getByID(id)");
+		return newsDao.getNewsById(id);
 		
 	}
 	

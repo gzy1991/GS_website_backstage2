@@ -68,6 +68,62 @@ public class Member extends BaseDomain {
 	private String selfEvaluation;
 	private Category category;
 	private String imgUrl;
+	private String loadname;
+	private String password;
+	private String email;
+	private String mobilePhone;
+	private String QQ;
+	private String gender;
+	private String major;
+	private String classNo;
+	public String getMobilePhone() {
+		return mobilePhone;
+	}
+	public String getMajor() {
+		return major;
+	}
+	public void setMajor(String major) {
+		this.major = major;
+	}
+	public String getClassNo() {
+		return classNo;
+	}
+	public void setClassNo(String classNo) {
+		this.classNo = classNo;
+	}
+	public void setMobilePhone(String mobilePhone) {
+		this.mobilePhone = mobilePhone;
+	}
+	public String getQQ() {
+		return QQ;
+	}
+	public void setQQ(String qQ) {
+		QQ = qQ;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getLoadname() {
+		return loadname;
+	}
+	public void setLoadname(String loadname) {
+		this.loadname = loadname;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public int getMemberId() {
 		return memberId;
 	}
