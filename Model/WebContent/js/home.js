@@ -213,20 +213,20 @@ function loadImgList(groupName) //发送请求  动态加载组员图片列表  
  } 
  function loadNewsList(num) //请求初始部分新闻列表
    {
-     loadXMLDoc("news"+"?"+encodeURIComponent("newsNumber=")+encodeURIComponent(num),function()
+     loadXMLDoc("get9Page",function()
         {
           if (xmlhttp.readyState==4 && xmlhttp.status==200)
              {
-            var jsonStr=request.responseText;
+            var jsonStr=xmlhttp.responseText;
             var newsArray=JSON.parse(jsonStr);
-            var fnewsNameList;
-            var fnewsDateList;
+            var fnewsNameList="";
+            var fnewsDateList="";
             for(var i=0;i<num;i++){
                 fnewsNameList +="<a class='newsDetail' href=''>"+newsArray[i].newsName+"</a><br>";
                 fnewsDateList +=newsArray[i].publishDate+"<br>";
             }
             $(".leftContent p").append(fnewsNameList);
-            $(".rightContent p").append(fnewsDateList)
+            $(".rightContent p").append(fnewsDateList);
                 
              }
         });
@@ -250,7 +250,7 @@ function loadNewsContent(newsName) //请求新闻内容
  } 
               
 var num=9;//首页显示的条数
-///loadNewsList(num);//初始加载新闻列表???????????????
+loadNewsList(num);//初始加载新闻列表???????????????
 
 /******************************上下滑动效果***************************/
 $(".shadow .button").click(function () {	//上下滑动效果
@@ -322,7 +322,8 @@ $(".more").click(function(){		//查看更多条新闻
 	$(".shadow .button").click(function () {	//返回首页显示滚动条
 		$("body").css("overflow-y","auto");
 	});
-   /// setpage();//动态设置加载新闻列表和翻页具体见setpage.js????????
+	reloadpage(1);
+    setpage();//动态设置加载新闻列表和翻页具体见setpage.js????????
 	return false;
 });
 

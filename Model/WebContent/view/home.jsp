@@ -35,7 +35,7 @@
         <ul>
             <li class="shadow"><a class="button" href="#first" >首页</a></li>
             <li class="shadow"><a class="button" href="#about" >关于我们</a></li>
-            <li class="shadow"><a class="button" href="#name" >新闻公告</a></li>
+            <li class="shadow"><a class="button" href="#news" >新闻公告</a></li>
             <li class="shadow"><a class="button" href="#employ" >实验室诚聘</a></li>
         </ul>
 
@@ -182,28 +182,12 @@
         <img class="border1" src="../images/newsborder1.jpg">
 
         <div class="leftContent">
-            <p> <a class="newsDetail" href="">关于2015届本科生毕业论文检测的通知</a><br>
-                <a class="newsDetail" href="">美国宾夕法尼亚大学学生交流访学团志愿者招募</a><br>
-                <a class="newsDetail" href="">2015阿里巴巴天池大数据竞赛通知</a><br>
-                <a class="newsDetail" href="">创意文化节各项比赛奖状及纪念品领取的通知</a><br>
-                <a class="newsDetail" href="">12级学生座谈通知</a><br>
-                <a class="newsDetail" href="">2015年大学生创新创业训练计划项目公示与报销说明</a><br>
-                <a class="newsDetail" href="">举办2015年东软集团暑期夏令营的通知</a><br>
-                <a class="newsDetail" href="">校运动会当天课停上通知</a><br>
-                <a class="newsDetail" href="">美国宾夕法尼亚大学学生交流访学团志愿者招募</a>
+            <p> 
             </p>
         </div>
 
         <div class="rightContent">
-            <p>2015-05-14<br>
-                2015-05-13<br>
-                2015-05-13<br>
-                2015-05-13<br>
-                2015-05-13<br>
-                2015-05-13<br>
-                2015-05-13<br>
-                2015-05-13<br>
-                2015-05-13</p>
+            <p></p>
 
         </div>
         <img class="border2" src="../images/newsborder2.jpg">
