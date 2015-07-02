@@ -198,55 +198,7 @@
 <div class="newsList">
       <img src="../images/moveleft.png" class="moveLeft pic3">
       <div class="container">
-            <p class="item">
-                <a href="" class="nlTitle newsDetail">关于2015届本科生毕业论文检测的通知</a>
-                <a href="" class="date">2015-5-14</a>
-            </p>
-
-            <p class="item">
-                <a href="" class="nlTitle newsDetail">美国宾夕法尼亚大学学生交流访学团志愿者招募</a>
-                <a href="" class="date">2015-5-15</a>
-            </p>
-            <p class="item">
-                <a href="" class="nlTitle newsDetail">2015阿里巴巴天池大数据竞赛通知</a>
-                <a href="" class="date">2015-5-15</a>
-            </p>
-            <p class="item">
-                <a href="" class="nlTitle newsDetail">创意文化节各项比赛及奖状及纪念品领取的通知</a>
-                <a href="" class="date">2015-5-15</a>
-            </p>
-            <p class="item">
-                <a href="" class="nlTitle newsDetail">2015年大学生创新创业训练计划项目公示与报销说明</a>
-                <a href="" class="date ">2015-5-15</a>
-            </p>
-            <p class="item">
-                <a href="" class="nlTitle newsDetail">举办2015年东软集团暑期夏令营的通知</a>
-                <a href="" class="date">2015-5-15</a>
-            </p>
-            <p class="item">
-                <a href="" class="nlTitle newsDetail">校运动会当天停上的通知校运动会当天停上的通知</a>
-                <a href="" class="date">2015-5-15</a>
-            </p>
-            <p class="item">
-                <a href="" class="nlTitle newsDetail">校运动会当天停上的通知校运动会当天停上的通知</a>
-                <a href="" class="date">2015-5-15</a>
-            </p>
-            <p class="item">
-                <a href="" class="nlTitle newsDetail">校运动会当天停上的通知校运动会当天停上的通知</a>
-                <a href="" class="date">2015-5-15</a>
-            </p>
-            <p class="item">
-                <a href="" class="nlTitle newsDetail">校运动会当天停上的通知校运动会当天停上的通知</a>
-                <a href="" class="date">2015-5-15</a>
-            </p>
-            <p class="item">
-                <a href="" class="nlTitle newsDetail">校运动会当天停上的通知校运动会当天停上的通知</a>
-                <a href="" class="date">2015-5-15</a>
-            </p>
-            <p class="item">
-                <a href="" class="nlTitle newsDetail">校运动会当天停上的通知</a>
-                <a href="" class="date">2015-5-15</a>
-            </p>
+           
             <p class="page" id="page">
 <!--                <a href="" class="pageNumber">上一页</a>
                 <a href="" class="pageNumber">首页</a>
