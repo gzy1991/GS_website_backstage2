@@ -1,6 +1,4 @@
-﻿//关振宇
-//5
-package net.gslab.controller;
+﻿package net.gslab.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -60,7 +58,7 @@ public class NewsController extends BaseController{
          * @param 
 		 */
 		//return newsService.getPage(pageIndex);  //使用默认的pageSize
-    	Page page=newsService.getPage(pageIndex,12);  //自定义pageSize为2 
+    	Page page=newsService.getPage("from News n order by n.publishDate desc",pageIndex,12);  //自定义pageSize为2 
     	List<News> data=page.getData();
     	for(int i=0;i<data.size();i++)
 		{
@@ -85,7 +83,7 @@ public class NewsController extends BaseController{
             * @param pageSize   每页的记录条数
             * @param 
    		 */
-    	   Page page=newsService.getPage(pageIndex,12);  //自定义pageSize为2
+    	   Page page=newsService.getPage("from News n order by n.publishDate desc",pageIndex,12);  //自定义pageSize为2
     	   
     	   return page;
    			}
