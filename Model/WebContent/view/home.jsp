@@ -13,6 +13,27 @@
     <script type="text/javascript" src="../js/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="../js/home.js"></script>
 <script type="text/javascript">
+//注册
+/***
+ *功能：隐藏和显示div
+ *参数divDisplay：html标签id
+ ***/
+function show(divid) {
+    document.getElementById(divid).style.display = "block";
+}
+function hideLogin() {
+    document.getElementById("loginDiv").style.display = "none";
+    var userPassword = document.getElementById("userPassword").value;
+    if (userPassword == "123") {
+        alert("登录成功")
+    }
+    else {
+        alert("登陆失败")
+    }
+}
+function hideSignUp() {
+    document.getElementById("signUpDiv").style.display = "none";
+}
 /*function SetWinHeight(ob) { 
     var win=ob; 
     if (document.getElementById) { 
@@ -32,12 +53,42 @@
 <div class="first" id="first">
     <div class="nav" >
         <img class="logo" src="../images/logo.png">
+        <div class="login">
+            <a href="#first" id="loginA" class="loginA" onclick="show('loginDiv')">登录|注册</a>
+
+        </div>
+        
         <ul>
             <li class="shadow"><a class="button" href="#first" >首页</a></li>
             <li class="shadow"><a class="button" href="#about" >关于我们</a></li>
             <li class="shadow"><a class="button" href="#news" >新闻公告</a></li>
             <li class="shadow"><a class="button" href="#employ" >实验室诚聘</a></li>
         </ul>
+        <div class="loginDiv" id="loginDiv">
+            <div class="loginLogo"><img src="images/logo.png"></div>
+            <div class="userInput">
+                <input type="text" placeholder="&nbsp用户名" name="username"/>
+                <input type="password" placeholder="&nbsp密码" id="userPassword" name="password"/></div>
+            <div class="loginButton">
+                <input type="submit" name="login" value="登录" onclick="hideLogin()">
+                <input type="submit" name="signUp" value="注册" onclick="show('signUpDiv');hideLogin()">
+            </div>
+
+        </div>
+        <!--登陆界面-->
+        <div class="signUpDiv" id="signUpDiv">
+            <div class="loginLogo"><img src="images/logo.png"></div>
+            <div class="userInput">
+                <input type="text" placeholder="&nbsp用户名" name="username"/>
+                <input type="password" placeholder="&nbsp密码" name="password"/>
+                <input type="password" placeholder="&nbsp确认密码" name="password"/>
+            </div>
+            <div class="loginButton">
+                <input type="submit" id="signUp" name="login" value="确认注册" onclick="hideSignUp('login')">
+            </div>
+
+        </div>
+        
 
     </div>
 </div><!--end of first-->

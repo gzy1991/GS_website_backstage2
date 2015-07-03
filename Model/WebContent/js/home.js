@@ -115,6 +115,7 @@ var imgArray ;   //取得的user对象
 var newsName;	//新闻名字
 var firstWidth ; 
 var secondWidth;
+var totalpage,pagesize,cpage,count,curcount,outstr; //setPage.js中使用
 $(document).ready(function(){
 /* **********************************滚动一定距离中心滑轮********************************/
 
@@ -262,7 +263,6 @@ $(".shadow .button").click(function () {	//上下滑动效果
  	 },500);
 });
 
-
 $(".photoLink").click(function(){  //点击组的图片
 
 	var groupName = $(this).attr("id"); 
@@ -311,7 +311,12 @@ $(".memberPhoto").click(function(){      //点几个人照片，战士个人详�
 	}
 	return false;
 });
-
+var flagMore=0;
+//初始化 
+cpage = 1; 
+totalpage = 0; 
+pagesize = 12; 
+outstr = ""; 
 $(".more").click(function(){		//查看更多条新闻
 	firstWidth=$(".news").width();
  	$("body").animate({
@@ -322,8 +327,10 @@ $(".more").click(function(){		//查看更多条新闻
 	$(".shadow .button").click(function () {	//返回首页显示滚动条
 		$("body").css("overflow-y","auto");
 	});
-	reloadpage(1);
-    setpage();//动态设置加载新闻列表和翻页具体见setpage.js????????
+	if(flagMore==0)
+	{reloadpage(1);}
+   // setpage();//动态设置加载新闻列表和翻页具体见setpage.js????????
+    flagMore=1;
 	return false;
 });
 
@@ -338,6 +345,7 @@ $(".newsDetail").click(function(){  //查看新闻具体内容
  	 },500);
     /*****************************ajax获取新闻内容****************************************/
     var newsName=$(this).text();
+    
   // /  loadNewsContent(newsName);??????????????????????????
 
  	$("body").css("overflow-y","hidden");//隐藏导航条
@@ -355,6 +363,17 @@ $(".newsDetail").click(function(){  //查看新闻具体内容
  	 scrollLeft:0 //让body的scrollTop等于pos的top，就实现了滚动
  	 },500); 	
 	$("body").css("overflow-y","auto");
+	
+/*	var imgArrays = document.getElementsByClassName("memberPhoto");
+	var personNames=document.getElementsByClassName("nameStyle");
+	for (var i = 0; i<urlArray.length; i++) {
+		imgArrays[i].onload=function(){
+			imgArrays[i].onload=null;	
+		}	
+		imgArrays[i].src=null;//删除图片对象地址
+		personNames[i].innerText=null;//????????.memberName
+	}*/
+
  });
   $(".pic2").click(function(){
 	firstWidth=$(".about").width();
